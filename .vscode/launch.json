@@ -1,0 +1,38 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?   linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch Debug", //名称
+            "type": "cppdbg", //调试类型，除使用msvc外，均为该类型
+            "request": "launch",
+            "program": "${workspaceFolder}/build/detect.exe ", //程序位置
+            "args": [], //启动参数
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}", //工作目录
+            "preLaunchTask": "build debug", //运行调试前的前置任务，编译
+            "environment": [],
+            "externalConsole": false,
+            "osx": { //macOS的配置
+                // "miDebuggerPath": "/Applications/Xcode.app/Contents/ Developer/usr/bin/lldb-mi", //修改使用的lldb-mi，一般不需要修改
+                "MIMode": "lldb" //指定为lldb调试
+            },
+            "linux": {
+                "MIMode": "gdb", //指定为gdb调试
+                "setupCommands": [
+                    {
+                        "description": "Enable pretty-printing for gdb",
+                        "text": "-enable-pretty-printing",
+                        "ignoreFailures": true
+                    }
+                ]
+            },
+            "windows": {
+                "type": "cppvsdbg", //指定调试方式为msvc
+                "program": "${workspaceFolder}/build/detect.exe", //指定程序位置
+            }
+        }
+    ]
+}
